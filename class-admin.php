@@ -98,16 +98,16 @@ class BetterImageCreditsAdmin {
 		if ($column == 'credits') {
 			$credit_source = esc_attr(get_post_meta($post_id, '_wp_attachment_source_name', true));
 			$credit_link = esc_url(get_post_meta($post_id, '_wp_attachment_source_url', true));
-			$source_dofollow = esc_attr( get_post_meta( $id, '_wp_attachment_source_dofollow', true ) );
+			$source_dofollow = esc_attr( get_post_meta( $post_id, '_wp_attachment_source_dofollow', true ) );
 
 			if (!empty($credit_source)) {
 				if (empty($credit_link)) {
 					echo $credit_source;
 				} else {
 					if ( ( $source_dofollow == true ) || ( $source_dofollow == 1 ) ) {
-						$credits[] = '<a href="' . $credit_link . '" target="_blank">' . $credit_source . '</a>';					
+						echo $credits[] = '<a href="' . $credit_link . '" target="_blank">' . $credit_source . '</a>';					
 					} else {
-						$credits[] = '<a href="' . $credit_link . '" rel="nofollow" target="_blank">' . $credit_source . '</a>';
+						echo $credits[] = '<a href="' . $credit_link . '" rel="nofollow" target="_blank">' . $credit_source . '</a>';
 					}					
 				}
 			}
